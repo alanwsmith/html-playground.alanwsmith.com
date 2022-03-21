@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Responsive Image Test - alan w. smith</title>
+
+    <meta
+      name="description"
+      content="Examining a new way to do responsive images"
+    />
+
+    <meta property="og:title" content="Responsive Image Test - alan w. smith" />
+    <meta
+      property="og:description"
+      content="Responsive Image Test - alan w. smith"
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content="https://html-playground.alanwsmith.com/responsive-image-test"
+    />
+    <meta
+      property="og:image"
+      content="https://html-playground.alanwsmith.com/og-image/main.jpg"
+    />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@theidofalan" />
+    <meta
+      name="twitter:title"
+      content="Responsive Image Test - alan w. smith"
+    />
+    <meta
+      name="twitter:image"
+      content="https://html-playground.alanwsmith.com/og-images/main.jpg"
+    />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicons/16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicons/32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="/favicons/96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="128x128"
+      href="/favicons/128x128.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="196x196"
+      href="/favicons/196x196.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="228x228"
+      href="/favicons/228x228.png"
+    />
+    <link
+      rel="apple-touch-icon-precomposed"
+      sizes="152x152"
+      href="/favicons/152x152.png"
+    />
+    <link
+      rel="apple-touch-icon-precomposed"
+      sizes="167x167"
+      href="/favicons/167x167.png"
+    />
+    <link
+      rel="apple-touch-icon-precomposed"
+      sizes="180x180"
+      href="/favicons/180x180.png"
+    />
+
+    <style>
+      body {
+        background-color: #2e4057;
+        color: #f6d8ae;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+      }
+      header {
+        padding-top: 18px;
+        padding-bottom: 4px;
+        width: 100%;
+        max-width: 64ch;
+        margin: 0 auto;
+        border-bottom: 1px solid #888;
+      }
+      main {
+        width: 100%;
+        margin: 0 auto;
+      }
+      footer {
+        color: #a5a58d;
+        width: 100%;
+        max-width: 64ch;
+        margin: 0 auto;
+        text-align: center;
+        margin-top: 60px;
+        padding-bottom: 12px;
+        font-size: 0.9rem;
+      }
+
+      a {
+        color: #b7b7a4;
+        text-decoration: none;
+      }
+
+      #container {
+        width: 300px;
+        background-color: green;
+        padding: 0;
+        margin: 0;
+      }
+
+      .image_wrapper {
+        width: 100%;
+        height: auto;
+        outline: solid red;
+      }
+
+      .image_wrapper img {
+        width: 100%;
+        vertical-align: bottom;
+      }
+    </style>
+
+    <script type="text/javascript">
+      const image_ratios = [
+        [1, 2],
+        [2, 1],
+        [1, 3],
+        [3, 1],
+        [1, 4],
+        [4, 1],
+        [2, 3],
+        [2, 5],
+        [2, 7],
+        [3, 2],
+        [5, 2],
+        [7, 2],
+        [3, 4],
+        [3, 5],
+        [3, 7],
+        [3, 8],
+        [4, 3],
+        [5, 3],
+        [7, 3],
+        [8, 3],
+      ]
+
+      const image_widths = [100, 200, 300, 400, 500, 750, 1000, 1250, 2000]
+
+      const image_sets = {}
+
+      image_ratios.forEach((ratio) => {
+        const ratio_id = `${ratio[0]}x${ratio[1]}`
+
+        image_sets[ratio_id] = {
+          srcsets: [],
+        }
+
+        image_widths.forEach((width) => {
+          const height = parseInt((width / ratio[0]) * ratio[1], 10)
+          image_sets[ratio_id].srcsets.push(
+            `https://alanwsmith.github.io/html-playground.alanwsmith.com/scripts/get_responsive_test_images/images/${
+              ratio[0]
+            }x${ratio[1]}_at_${width}x${height}.jpg?cb=${Math.floor(
+              Math.random() * 10000
+            )}`
+          )
+        })
+        image_sets[ratio_id].src = image_sets[ratio_id].srcsets[0]
+      })
+
+      console.log(image_sets)
+
+      const images = [
+        {
+          id: 'img0',
+          src: 'https://res.cloudinary.com/demo/image/upload/c_fill,w_100,h_75/co_white,l_text:Oswald_16_bold:100x75/fl_layer_apply/horses.png',
+          srcset:
+            'https://res.cloudinary.com/demo/image/upload/c_fill,w_4000,h_3000/co_white,l_text:Oswald_666_bold:4000x3000/fl_layer_apply/horses.png 4000w, https://res.cloudinary.com/demo/image/upload/c_fill,w_3500,h_2625/co_white,l_text:Oswald_583_bold:3500x2625/fl_layer_apply/horses.png 3500w, https://res.cloudinary.com/demo/image/upload/c_fill,w_3000,h_2250/co_white,l_text:Oswald_500_bold:3000x2250/fl_layer_apply/horses.png 3000w, https://res.cloudinary.com/demo/image/upload/c_fill,w_2000,h_1500/co_white,l_text:Oswald_333_bold:2000x1500/fl_layer_apply/horses.png 2000w, https://res.cloudinary.com/demo/image/upload/c_fill,w_1500,h_1125/co_white,l_text:Oswald_250_bold:1500x1125/fl_layer_apply/horses.png 1500w, https://res.cloudinary.com/demo/image/upload/c_fill,w_1250,h_937/co_white,l_text:Oswald_208_bold:1250x937/fl_layer_apply/horses.png 1250w, https://res.cloudinary.com/demo/image/upload/c_fill,w_1000,h_750/co_white,l_text:Oswald_166_bold:1000x750/fl_layer_apply/horses.png 1000w, https://res.cloudinary.com/demo/image/upload/c_fill,w_750,h_562/co_white,l_text:Oswald_125_bold:750x562/fl_layer_apply/horses.png 750w, https://res.cloudinary.com/demo/image/upload/c_fill,w_500,h_375/co_white,l_text:Oswald_83_bold:500x375/fl_layer_apply/horses.png 500w, https://res.cloudinary.com/demo/image/upload/c_fill,w_400,h_300/co_white,l_text:Oswald_66_bold:400x300/fl_layer_apply/horses.png 400w, https://res.cloudinary.com/demo/image/upload/c_fill,w_300,h_225/co_white,l_text:Oswald_50_bold:300x225/fl_layer_apply/horses.png 300w, https://res.cloudinary.com/demo/image/upload/c_fill,w_200,h_150/co_white,l_text:Oswald_33_bold:200x150/fl_layer_apply/horses.png 200w, https://res.cloudinary.com/demo/image/upload/c_fill,w_100,h_75/co_white,l_text:Oswald_16_bold:100x75/fl_layer_apply/horses.png 100w',
+        },
+      ]
+
+      function doStuff() {
+        console.log('DOM Ready.')
+        images.forEach((image) => {
+          const target = document.getElementById(image.id)
+          const image_element = document.createElement('img')
+          image_element.src = image.src
+          image_element.srcset = image.srcset
+          image_element.sizes = window.getComputedStyle(target).width
+          target.appendChild(image_element)
+        })
+      }
+
+      document.addEventListener('DOMContentLoaded', doStuff)
+    </script>
+  </head>
+  <body>
+    <header>
+      <a href="/">home</a> ~
+      <a href="https://www.alanwsmith.com/">alanwsmith.com</a> ~
+      <a href="https://links.alanwsmith.com">links</a> ~
+      <a href="https://podcast.alanwsmith.com/">podcast</a>
+    </header>
+    <main>
+      <div>This text is above the images</div>
+
+      <div id="container">
+        <div class="image_wrapper" id="img0" style="aspect-ratio: 1 / 3"></div>
+      </div>
+
+      <div>This text is below the images</div>
+    </main>
+    <footer>
+      made by <a href="https://twitter.com/TheIdOfAlan">alan w. smith</a>
+      <br />
+      who has a <a href="https://www.alanwsmith.com">website</a> and a
+      <a href="https://podcast.alanwsmith.com/">podcast</a> <br />
+      among other <a href="https://links.alanwsmith.com">things</a>
+    </footer>
+  </body>
+</html>
