@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>img srcset test - alan w. smith</title>
+
+    <meta
+      name="description"
+      content="Getting my head wrapper around img srcset"
+    />
+
+    <meta property="og:title" content="img srcset test - alan w. smith" />
+    <meta property="og:description" content="img srcset test - alan w. smith" />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content="https://html-playground.alanwsmith.com/img-srcset-test"
+    />
+    <meta
+      property="og:image"
+      content="https://html-playground.alanwsmith.com/og-image/main.jpg"
+    />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@theidofalan" />
+    <meta name="twitter:title" content="img srcset test - alan w. smith" />
+    <meta
+      name="twitter:image"
+      content="https://html-playground.alanwsmith.com/og-images/main.jpg"
+    />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicons/16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicons/32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="/favicons/96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="128x128"
+      href="/favicons/128x128.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="196x196"
+      href="/favicons/196x196.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="228x228"
+      href="/favicons/228x228.png"
+    />
+    <link
+      rel="apple-touch-icon-precomposed"
+      sizes="152x152"
+      href="/favicons/152x152.png"
+    />
+    <link
+      rel="apple-touch-icon-precomposed"
+      sizes="167x167"
+      href="/favicons/167x167.png"
+    />
+    <link
+      rel="apple-touch-icon-precomposed"
+      sizes="180x180"
+      href="/favicons/180x180.png"
+    />
+
+    <style>
+      body {
+        background-color: #2e4057;
+        color: #f6d8ae;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+      }
+      header {
+        padding-top: 18px;
+        padding-bottom: 4px;
+        width: 100%;
+        max-width: 64ch;
+        margin: 0 auto;
+        border-bottom: 1px solid #888;
+      }
+      main {
+        width: 100%;
+        max-width: 64ch;
+        margin: 0 auto;
+      }
+      footer {
+        color: #a5a58d;
+        width: 100%;
+        max-width: 64ch;
+        margin: 0 auto;
+        text-align: center;
+        margin-top: 60px;
+        padding-bottom: 12px;
+        font-size: 0.9rem;
+      }
+
+      a {
+        color: #b7b7a4;
+        text-decoration: none;
+      }
+    </style>
+
+    <script type="text/javascript">
+      function doStuff() {
+        console.log('DOM Ready zx')
+        const ratio_div = document.getElementById('ratio')
+        ratio_div.innerHTML = `Device Pixel Ratio: ${window.devicePixelRatio}`
+      }
+      document.addEventListener('DOMContentLoaded', doStuff)
+    </script>
+  </head>
+  <body class="pallet1">
+    <header>
+      <a href="/">home</a> ~
+      <a href="https://www.alanwsmith.com/">alanwsmith.com</a> ~
+      <a href="https://links.alanwsmith.com">links</a> ~
+      <a href="https://podcast.alanwsmith.com/">podcast</a>
+    </header>
+    <main>
+      <h1>img srcset test</h1>
+      <ul>
+        <li>
+          Trying to get my head wrapped around calling image with img srcset
+        </li>
+        <li>Mainly want to see if you can set width and height</li>
+      </ul>
+      <div id="ratio"></div>
+
+      <div>
+        <img
+          src="markers/100x67.png"
+          srcset="
+            markers/6000x4000.png 6000w,
+            markers/3000x2000.png 3000w,
+            markers/1980x1320.png 1980w,
+            markers/1500x1000.png 1500w,
+            markers/1000x667.png  1000w,
+            markers/600x400.png    600w,
+            markers/400x267.png    400w,
+            markers/300x200.png    300w,
+            markers/200x133.png    200w,
+            markers/100x67.png     100w
+          "
+          sizes="300px"
+          alt="A black image with red text displaying the width and height of the image that was loaded"
+          width="1500px"
+          height="1000px"
+        />
+      </div>
+    </main>
+    <footer>
+      made by <a href="https://twitter.com/TheIdOfAlan">alan w. smith</a>
+      <br />
+      who has a <a href="https://www.alanwsmith.com">website</a> and a
+      <a href="https://podcast.alanwsmith.com/">podcast</a> <br />
+      among other <a href="https://links.alanwsmith.com">things</a>
+    </footer>
+  </body>
+</html>
