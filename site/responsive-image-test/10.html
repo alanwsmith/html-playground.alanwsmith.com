@@ -127,17 +127,31 @@
         text-decoration: none;
       }
 
-      #container {
-        width: 300px;
+      #container1 {
         background-color: green;
         padding: 0;
         margin: 0;
+        display: flex;
+      }
+
+      #container2 {
+        background-color: blue;
+        padding: 0;
+        margin: 0;
+        display: flex;
+      }
+
+      #container3 {
+        width: 90%;
+        background-color: red;
+        padding: 0;
+        margin: 0;
+        display: flex;
       }
 
       .image_wrapper {
         width: 100%;
         height: auto;
-        outline: solid red;
       }
 
       .image_wrapper img {
@@ -148,6 +162,7 @@
 
     <script type="text/javascript">
       const image_ratios = [
+        [1, 1],
         [1, 2],
         [2, 1],
         [1, 3],
@@ -170,7 +185,7 @@
         [8, 3],
       ]
 
-      const image_widths = [100, 200, 300, 400, 500, 750, 1000, 1250, 2000]
+      const image_widths = [200, 300, 400, 500, 750, 1000, 1250, 2000, 100]
 
       const image_sets = {}
 
@@ -183,38 +198,47 @@
 
         image_widths.forEach((width) => {
           const height = parseInt((width / ratio[0]) * ratio[1], 10)
-          image_sets[ratio_id].srcsets.push(
-            `https://alanwsmith.github.io/html-playground.alanwsmith.com/scripts/get_responsive_test_images/images/${
-              ratio[0]
-            }x${ratio[1]}_at_${width}x${height}.jpg?cb=${Math.floor(
-              Math.random() * 10000
-            )}`
-          )
+          const url = `https://alanwsmith.github.io/html-playground.alanwsmith.com/scripts/get_responsive_test_images/images/${
+            ratio[0]
+          }x${ratio[1]}_at_${width}x${height}.jpg?cb=${Math.floor(
+            Math.random() * 10000
+          )}`
+
+          // just set src to url each time so it ends up at 100 (hack, but works)
+          image_sets[ratio_id].src = url
+          image_sets[ratio_id].srcsets.push(`${url} ${width}w`)
         })
         image_sets[ratio_id].src = image_sets[ratio_id].srcsets[0]
       })
 
       console.log(image_sets)
 
-      const images = [
-        {
-          id: 'img0',
-          src: 'https://res.cloudinary.com/demo/image/upload/c_fill,w_100,h_75/co_white,l_text:Oswald_16_bold:100x75/fl_layer_apply/horses.png',
-          srcset:
-            'https://res.cloudinary.com/demo/image/upload/c_fill,w_4000,h_3000/co_white,l_text:Oswald_666_bold:4000x3000/fl_layer_apply/horses.png 4000w, https://res.cloudinary.com/demo/image/upload/c_fill,w_3500,h_2625/co_white,l_text:Oswald_583_bold:3500x2625/fl_layer_apply/horses.png 3500w, https://res.cloudinary.com/demo/image/upload/c_fill,w_3000,h_2250/co_white,l_text:Oswald_500_bold:3000x2250/fl_layer_apply/horses.png 3000w, https://res.cloudinary.com/demo/image/upload/c_fill,w_2000,h_1500/co_white,l_text:Oswald_333_bold:2000x1500/fl_layer_apply/horses.png 2000w, https://res.cloudinary.com/demo/image/upload/c_fill,w_1500,h_1125/co_white,l_text:Oswald_250_bold:1500x1125/fl_layer_apply/horses.png 1500w, https://res.cloudinary.com/demo/image/upload/c_fill,w_1250,h_937/co_white,l_text:Oswald_208_bold:1250x937/fl_layer_apply/horses.png 1250w, https://res.cloudinary.com/demo/image/upload/c_fill,w_1000,h_750/co_white,l_text:Oswald_166_bold:1000x750/fl_layer_apply/horses.png 1000w, https://res.cloudinary.com/demo/image/upload/c_fill,w_750,h_562/co_white,l_text:Oswald_125_bold:750x562/fl_layer_apply/horses.png 750w, https://res.cloudinary.com/demo/image/upload/c_fill,w_500,h_375/co_white,l_text:Oswald_83_bold:500x375/fl_layer_apply/horses.png 500w, https://res.cloudinary.com/demo/image/upload/c_fill,w_400,h_300/co_white,l_text:Oswald_66_bold:400x300/fl_layer_apply/horses.png 400w, https://res.cloudinary.com/demo/image/upload/c_fill,w_300,h_225/co_white,l_text:Oswald_50_bold:300x225/fl_layer_apply/horses.png 300w, https://res.cloudinary.com/demo/image/upload/c_fill,w_200,h_150/co_white,l_text:Oswald_33_bold:200x150/fl_layer_apply/horses.png 200w, https://res.cloudinary.com/demo/image/upload/c_fill,w_100,h_75/co_white,l_text:Oswald_16_bold:100x75/fl_layer_apply/horses.png 100w',
-        },
-      ]
+      function addImage(image_id, image_ratio) {
+        console.log(`Adding Image: ${image_id} - ${image_ratio}`)
+        const target = document.getElementById(image_id)
+        const image_element = document.createElement('img')
+        image_element.src = image_sets[image_ratio].src
+        image_element.srcset = image_sets[image_ratio].srcsets.join(',')
+        image_element.sizes = window.getComputedStyle(target).width
+        target.appendChild(image_element)
+      }
 
       function doStuff() {
         console.log('DOM Ready.')
-        images.forEach((image) => {
-          const target = document.getElementById(image.id)
-          const image_element = document.createElement('img')
-          image_element.src = image.src
-          image_element.srcset = image.srcset
-          image_element.sizes = window.getComputedStyle(target).width
-          target.appendChild(image_element)
-        })
+        addImage('img0', '1x1')
+        addImage('img1', '5x3')
+        addImage('img2', '4x3')
+        addImage('img3', '2x3')
+        addImage('img4', '1x3')
+        addImage('img5', '2x3')
+        addImage('img6', '2x1')
+        addImage('img7', '3x1')
+        addImage('img8', '1x2')
+        addImage('img9', '4x3')
+        addImage('img10', '1x1')
+        addImage('img11', '5x2')
+        addImage('img12', '5x3')
+        addImage('img13', '3x2')
       }
 
       document.addEventListener('DOMContentLoaded', doStuff)
@@ -228,10 +252,31 @@
       <a href="https://podcast.alanwsmith.com/">podcast</a>
     </header>
     <main>
-      <div>This text is above the images</div>
+      <div>
+        This is a test to see how a bunch of images perform on the same page
+      </div>
 
-      <div id="container">
-        <div class="image_wrapper" id="img0" style="aspect-ratio: 1 / 3"></div>
+      <div id="container1">
+        <div class="image_wrapper" id="img0" style="aspect-ratio: 1 / 1"></div>
+        <div class="image_wrapper" id="img1" style="aspect-ratio: 5 / 3"></div>
+        <div class="image_wrapper" id="img2" style="aspect-ratio: 4 / 3"></div>
+        <div class="image_wrapper" id="img3" style="aspect-ratio: 2 / 3"></div>
+      </div>
+
+      <div id="container2">
+        <div class="image_wrapper" id="img4" style="aspect-ratio: 1 / 3"></div>
+        <div class="image_wrapper" id="img5" style="aspect-ratio: 2 / 3"></div>
+        <div class="image_wrapper" id="img6" style="aspect-ratio: 2 / 1"></div>
+        <div class="image_wrapper" id="img7" style="aspect-ratio: 3 / 1"></div>
+        <div class="image_wrapper" id="img8" style="aspect-ratio: 1 / 2"></div>
+      </div>
+
+      <div id="container3">
+        <div class="image_wrapper" id="img9" style="aspect-ratio: 4 / 3"></div>
+        <div class="image_wrapper" id="img10" style="aspect-ratio: 1 / 1"></div>
+        <div class="image_wrapper" id="img11" style="aspect-ratio: 5 / 2"></div>
+        <div class="image_wrapper" id="img12" style="aspect-ratio: 5 / 3"></div>
+        <div class="image_wrapper" id="img13" style="aspect-ratio: 3 / 2"></div>
       </div>
 
       <div>This text is below the images</div>
