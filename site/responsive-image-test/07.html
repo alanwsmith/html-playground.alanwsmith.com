@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Responsive Image Test - alan w. smith</title>
+
+    <meta
+      name="description"
+      content="Examining a new way to do responsive images"
+    />
+
+    <meta property="og:title" content="Responsive Image Test - alan w. smith" />
+    <meta
+      property="og:description"
+      content="Responsive Image Test - alan w. smith"
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content="https://html-playground.alanwsmith.com/responsive-image-test"
+    />
+    <meta
+      property="og:image"
+      content="https://html-playground.alanwsmith.com/og-image/main.jpg"
+    />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@theidofalan" />
+    <meta
+      name="twitter:title"
+      content="Responsive Image Test - alan w. smith"
+    />
+    <meta
+      name="twitter:image"
+      content="https://html-playground.alanwsmith.com/og-images/main.jpg"
+    />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicons/16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicons/32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="/favicons/96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="128x128"
+      href="/favicons/128x128.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="196x196"
+      href="/favicons/196x196.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="228x228"
+      href="/favicons/228x228.png"
+    />
+    <link
+      rel="apple-touch-icon-precomposed"
+      sizes="152x152"
+      href="/favicons/152x152.png"
+    />
+    <link
+      rel="apple-touch-icon-precomposed"
+      sizes="167x167"
+      href="/favicons/167x167.png"
+    />
+    <link
+      rel="apple-touch-icon-precomposed"
+      sizes="180x180"
+      href="/favicons/180x180.png"
+    />
+
+    <style>
+      body {
+        background-color: #2e4057;
+        color: #f6d8ae;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+      }
+      header {
+        padding-top: 18px;
+        padding-bottom: 4px;
+        width: 100%;
+        max-width: 64ch;
+        margin: 0 auto;
+        border-bottom: 1px solid #888;
+      }
+      main {
+        width: 100%;
+        margin: 0 auto;
+      }
+      footer {
+        color: #a5a58d;
+        width: 100%;
+        max-width: 64ch;
+        margin: 0 auto;
+        text-align: center;
+        margin-top: 60px;
+        padding-bottom: 12px;
+        font-size: 0.9rem;
+      }
+
+      a {
+        color: #b7b7a4;
+        text-decoration: none;
+      }
+
+      #test1 {
+        background-color: #ccc;
+      }
+
+      .column {
+        width: 300px;
+        background-color: green;
+        padding: 0;
+        margin: 0;
+      }
+
+      .container {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 300/200;
+        background-color: blue;
+        padding: 0;
+        margin: 0;
+      }
+
+      .container img {
+        vertical-align: bottom;
+      }
+
+      #d1 {
+        background-color: red;
+      }
+    </style>
+
+    <script type="text/javascript">
+      function doStuff() {
+        console.log('DOM Ready.')
+
+        /*
+        const d1 = document.getElementById('d1')
+        const theStyles = window.getComputedStyle(d1)
+        console.log(theStyles.width)
+        */
+      }
+      document.addEventListener('DOMContentLoaded', doStuff)
+
+      function addImage() {
+        const image_column = document.getElementById('image_column')
+        const wrapper_div = document.createElement('div')
+        wrapper_div.id = 'd1'
+        image_column.appendChild(wrapper_div)
+        console.log(window.getComputedStyle(d1).width)
+        wrapper_div.style.backgroundColor = 'purple'
+        wrapper_div.style.aspectRatio = 300 / 200
+
+        wrapper_div.style.display = 'inline'
+        /*
+        wrapper_div.style.width = '100%'
+        wrapper_div.style.height = 'auto'
+        const image_element = document.createElement('img')
+        image_element.src = 'markers/100x67.png'
+        image_element.style.verticalAlign = 'bottom'
+        wrapper_div.appendChild(image_element)
+        */
+      }
+    </script>
+  </head>
+  <body>
+    <header>
+      <a href="/">home</a> ~
+      <a href="https://www.alanwsmith.com/">alanwsmith.com</a> ~
+      <a href="https://links.alanwsmith.com">links</a> ~
+      <a href="https://podcast.alanwsmith.com/">podcast</a>
+    </header>
+    <main>
+      <h1>Don't think this one is going to work. Punting on it</h1>
+      <div id="test1">this is a test</div>
+
+      <div id="image_column" class="column"></div>
+      <script type="text/javascript">
+        addImage()
+      </script>
+
+      <div>below text</div>
+    </main>
+    <footer>
+      made by <a href="https://twitter.com/TheIdOfAlan">alan w. smith</a>
+      <br />
+      who has a <a href="https://www.alanwsmith.com">website</a> and a
+      <a href="https://podcast.alanwsmith.com/">podcast</a> <br />
+      among other <a href="https://links.alanwsmith.com">things</a>
+    </footer>
+  </body>
+</html>

@@ -85,6 +85,8 @@
 
     <style>
       body {
+        background-color: #2e4057;
+        color: #f6d8ae;
         margin: 0;
         padding: 0;
         min-height: 100vh;
@@ -105,6 +107,7 @@
         margin: 0 auto;
       }
       footer {
+        color: #a5a58d;
         width: 100%;
         max-width: 64ch;
         margin: 0 auto;
@@ -115,58 +118,40 @@
       }
 
       a {
-        text-decoration: none;
-      }
-
-      .pallet1 {
-        background-color: #6b705c;
-        color: #ffe8d6;
-      }
-      .pallet1 a {
         color: #b7b7a4;
-      }
-      .pallet1 footer {
-        color: #a5a58d;
+        text-decoration: none;
       }
     </style>
 
     <script type="text/javascript">
       function doStuff() {
-        console.log('doing stuff')
+        console.log('DOM Ready.')
       }
       document.addEventListener('DOMContentLoaded', doStuff)
     </script>
   </head>
   <body>
-    <script type="text/javascript">
-      document.body.className = 'pallet1'
-    </script>
     <header>
+      <a href="/">home</a> ~
       <a href="https://www.alanwsmith.com/">alanwsmith.com</a> ~
       <a href="https://links.alanwsmith.com">links</a> ~
       <a href="https://podcast.alanwsmith.com/">podcast</a>
     </header>
     <main>
-      <h1>Static Starter</h1>
+      <h1>The HTML Playground Of Alan</h1>
+      <p>
+        A place to experiment with vanilla HTML, CSS, and JavaScript. Everything
+        hand-coded. No frameworks involved.
+      </p>
       <ul>
         <li>
-          This page is a basic starter HTML Template for use without frameworks
+          <a href="/img-srcset-test">img srcset test</a>
         </li>
         <li>
-          Right now, it&apos;s focused on the favicons and Open Graph (OG)
-          Images in the &lt;head&gt; of the document
-        </li>
-        <li>It has a sticky footer that's done with 'grid-template-rows'</li>
-        <li>
-          A script sets the style for the body tag which sets the color. (More
-          will be added over time)
+          <a href="/responsive-image-test/index.html">Responsive Image Test</a>
+          - Trying a different way to make responsive images.
         </li>
       </ul>
-      <p>
-        <a href="https://github.com/alanwsmith/static-template.alanwsmith.com"
-          >Source code</a
-        >
-      </p>
     </main>
     <footer>
       made by <a href="https://twitter.com/TheIdOfAlan">alan w. smith</a>

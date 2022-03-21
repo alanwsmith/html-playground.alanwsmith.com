@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Responsive Image Test - alan w. smith</title>
+
+    <meta
+      name="description"
+      content="Examining a new way to do responsive images"
+    />
+
+    <meta property="og:title" content="Responsive Image Test - alan w. smith" />
+    <meta
+      property="og:description"
+      content="Responsive Image Test - alan w. smith"
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content="https://html-playground.alanwsmith.com/responsive-image-test"
+    />
+    <meta
+      property="og:image"
+      content="https://html-playground.alanwsmith.com/og-image/main.jpg"
+    />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@theidofalan" />
+    <meta
+      name="twitter:title"
+      content="Responsive Image Test - alan w. smith"
+    />
+    <meta
+      name="twitter:image"
+      content="https://html-playground.alanwsmith.com/og-images/main.jpg"
+    />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicons/16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicons/32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="/favicons/96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="128x128"
+      href="/favicons/128x128.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="196x196"
+      href="/favicons/196x196.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="228x228"
+      href="/favicons/228x228.png"
+    />
+    <link
+      rel="apple-touch-icon-precomposed"
+      sizes="152x152"
+      href="/favicons/152x152.png"
+    />
+    <link
+      rel="apple-touch-icon-precomposed"
+      sizes="167x167"
+      href="/favicons/167x167.png"
+    />
+    <link
+      rel="apple-touch-icon-precomposed"
+      sizes="180x180"
+      href="/favicons/180x180.png"
+    />
+
+    <style>
+      body {
+        background-color: #2e4057;
+        color: #f6d8ae;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+      }
+      header {
+        padding-top: 18px;
+        padding-bottom: 4px;
+        width: 100%;
+        max-width: 64ch;
+        margin: 0 auto;
+        border-bottom: 1px solid #888;
+      }
+      main {
+        width: 100%;
+        margin: 0 auto;
+      }
+      footer {
+        color: #a5a58d;
+        width: 100%;
+        max-width: 64ch;
+        margin: 0 auto;
+        text-align: center;
+        margin-top: 60px;
+        padding-bottom: 12px;
+        font-size: 0.9rem;
+      }
+
+      a {
+        color: #b7b7a4;
+        text-decoration: none;
+      }
+
+      #test1 {
+        background-color: #ccc;
+      }
+
+      .container {
+        width: 300px;
+        height: auto;
+        aspect-ratio: 300/200;
+        background-color: green;
+        padding: 0;
+        margin: 0;
+      }
+
+      .container img {
+        margin: 0;
+        padding: 0;
+        vertical-align: bottom;
+      }
+    </style>
+
+    <script type="text/javascript">
+      function doStuff() {
+        console.log('DOM Ready.')
+        const t1 = document.getElementById('test1')
+        const theStyles = window.getComputedStyle(t1)
+        console.log(theStyles.width)
+      }
+      document.addEventListener('DOMContentLoaded', doStuff)
+    </script>
+  </head>
+  <body>
+    <header>
+      <a href="/">home</a> ~
+      <a href="https://www.alanwsmith.com/">alanwsmith.com</a> ~
+      <a href="https://links.alanwsmith.com">links</a> ~
+      <a href="https://podcast.alanwsmith.com/">podcast</a>
+    </header>
+    <main>
+      <ul>
+        <li>
+          The goal is to make it easier to automatically load a proper source
+          image with automatic sizing without layout shift
+        </li>
+      </ul>
+
+      <div id="test1">this is a test</div>
+
+      <div>
+        <div>0</div>
+        <div class="container">
+          <img
+            src="noise/300x200.png?0ec53450b8094804bd8cebd758bb03de4297357d"
+          />
+        </div>
+        <div>1</div>
+        <div class="container">
+          <img
+            src="noise/300x200.png?0ec53450dd6534d526411bea1fe2523b00c4ec0a"
+          />
+        </div>
+        <div>2</div>
+        <div class="container">
+          <img
+            src="noise/300x200.png?0ec5345000c0b871225742f1e33dcd0d14c03fd5"
+          />
+        </div>
+        <div>3</div>
+        <div class="container">
+          <img
+            src="noise/300x200.png?0ec5345098652421da8ba993aa4c624f47b8f397"
+          />
+        </div>
+        <div>4</div>
+        <div class="container">
+          <img
+            src="noise/300x200.png?0ec53450c2d67e353cbadab32ad259890e5d345c"
+          />
+        </div>
+        <div>5</div>
+        <div class="container">
+          <img
+            src="noise/300x200.png?0ec5345013c9336310b14f1b336d0a7ec4d3bd03"
+          />
+        </div>
+        <div>6</div>
+        <div class="container">
+          <img
+            src="noise/300x200.png?0ec5345022ee2f077240ad40eb5b8f97f0a21d9b"
+          />
+        </div>
+        <div>7</div>
+        <div class="container">
+          <img
+            src="noise/300x200.png?0ec534508e59885075c3b63d044d55b969b106af"
+          />
+        </div>
+        <div>8</div>
+        <div class="container">
+          <img
+            src="noise/300x200.png?0ec534509201dbba922d01ff17845c84c1212e6a"
+          />
+        </div>
+        <div>9</div>
+        <div class="container">
+          <img
+            src="noise/300x200.png?0ec534509fbd7d22d83b67a1feaa86aaf392ec25"
+          />
+        </div>
+        <div>10</div>
+        <div class="container">
+          <img
+            src="noise/300x200.png?0ec534506590a8406e4ce29079eb90b6ae13ec22"
+          />
+        </div>
+        <div>11</div>
+        <div class="container">
+          <img
+            src="noise/300x200.png?0ec534507fbe0028764d9a904f80beb1aba2cfd2"
+          />
+        </div>
+      </div>
+      <div>below text</div>
+    </main>
+    <footer>
+      made by <a href="https://twitter.com/TheIdOfAlan">alan w. smith</a>
+      <br />
+      who has a <a href="https://www.alanwsmith.com">website</a> and a
+      <a href="https://podcast.alanwsmith.com/">podcast</a> <br />
+      among other <a href="https://links.alanwsmith.com">things</a>
+    </footer>
+  </body>
+</html>
